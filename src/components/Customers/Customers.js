@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
 import { CUSTOMERS_QUERY } from '../../queries';
 
@@ -15,7 +16,7 @@ const Customers = () => (
                 }
                 return (
                     <Fragment>
-                        <h2 className="text-center mt-4">Customers list</h2>
+                        <h2 className="text-center">Customers list</h2>
                         <ul className="list-group mt-4">
                             {
                                 data.getAllCustomers.map((customer) => (
@@ -25,9 +26,9 @@ const Customers = () => (
                                                 {`${customer.name} ${customer.surname}`}
                                             </div>
                                             <div className="col-md-4 d-flex justify-content-end">
-                                                <a className="btn btn-success d-block d-md-inline-block">
+                                                <Link to={`/customer/edit/${customer.id}`} className="btn btn-success d-block d-md-inline-block">
                                                     Edit customer
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </li>

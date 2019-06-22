@@ -5,6 +5,8 @@ import ApolloClient from 'apollo-boost';
 // Imported components
 import Header from './components/Header';
 import Customers from './components/Customers';
+import NewCustomer from './components/NewCustomer';
+import EditCustomer from './components/EditCustomer';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -26,6 +28,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Customers} />
+                <Route exact path="/customer/edit/:id" component={EditCustomer} />
+                <Route exact path="/customer/new" component={NewCustomer} />
               </Switch>
             </div>
           </Fragment>
