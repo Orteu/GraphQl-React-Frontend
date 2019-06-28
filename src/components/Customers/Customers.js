@@ -5,9 +5,12 @@ import { Link } from 'react-router-dom';
 import { CUSTOMERS_QUERY } from '../../queries';
 
 const Customers = () => (
-    <Query query={CUSTOMERS_QUERY}>
+    <Query
+        query={CUSTOMERS_QUERY}
+        pollInterval={1000}
+    >
         {
-            ({ loading, error, data }) => {
+            ({ loading, error, data, startPolling, stopPolling }) => {
                 if (loading) {
                     return "...loading"
                 }
