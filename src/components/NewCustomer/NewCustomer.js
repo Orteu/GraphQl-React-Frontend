@@ -30,7 +30,7 @@ export default class NewCustomer extends Component {
 				[key]: value.target.value
 			}
 		});
-  };
+  	};
   
   checkFields = () => {
     const { editCustomer } = this.state;
