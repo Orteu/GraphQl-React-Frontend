@@ -81,7 +81,7 @@ export default class NewCustomer extends Component {
 										>
 											<option value="">Elegir...</option>
 											<option value="USER">USER</option>
-											<option value="COMPANY">COMPANY</option>
+											<option value="ADMIN">ADMIN</option>
 										</select>
 									</div>
 									<div className="form-group col-md-6">

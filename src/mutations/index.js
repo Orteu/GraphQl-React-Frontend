@@ -21,3 +21,9 @@ export const UPDATE_CUSTOMER = gql`
         }
     }
 `;
+
+export const REMOVE_CUSTOMER = gql`
+    mutation updateCustomer($id: ID){
+        removeCustomer(id: $id)
+    }
+`;
