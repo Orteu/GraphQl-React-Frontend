@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
-import { NEW_CUSTOMER } from '../../mutations';
 import { Mutation } from 'react-apollo';
+import { NEW_CUSTOMER } from '../../mutations';
+
 
 export default class NewCustomer extends Component {
 	constructor(props) {
@@ -16,11 +17,10 @@ export default class NewCustomer extends Component {
 		};
 	}
 
-	createCustomer = (e, func) => {
+	createCustomer = (e, createCustomer) => {
 		e.preventDefault();
 		const { editCustomer } = this.state;
-		const input = editCustomer;
-		func({ variables: { input } });
+		createCustomer({ variables: { input: editCustomer } });
 	};
 
 	setCustomer = (key, value) => {
@@ -47,9 +47,9 @@ export default class NewCustomer extends Component {
 				<h2 className="text-center">New Customer</h2>
 				<div className="row justify-content-center">
 					<Mutation
-            mutation={NEW_CUSTOMER}
-            onCompleted={() => this.props.history.push('/')}
-          >
+						mutation={NEW_CUSTOMER}
+						onCompleted={() => this.props.history.push('/')}
+					>
 						{(createCustomer) => (
 							<form className="col-md-8 m-3" onSubmit={(e) => this.createCustomer(e, createCustomer)}>
 								<div className="form-row">
@@ -96,10 +96,10 @@ export default class NewCustomer extends Component {
 								</div>
 
 								<button
-                  disabled={!this.checkFields()}
-                  type="submit"
-                  className="btn btn-success float-right"
-                >
+									disabled={!this.checkFields()}
+									type="submit"
+									className="btn btn-success float-right"
+									>
 									Guardar Cambios
 								</button>
 							</form>

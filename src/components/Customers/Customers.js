@@ -7,7 +7,7 @@ import { CUSTOMERS_QUERY } from '../../queries';
 const Customers = () => (
     <Query
         query={CUSTOMERS_QUERY}
-        pollInterval={1000}
+        pollInterval={100}
     >
         {
             ({ loading, error, data, startPolling, stopPolling }) => {

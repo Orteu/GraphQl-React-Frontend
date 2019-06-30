@@ -4,20 +4,15 @@ import { CUSTOMER_GET_BY_ID } from '../../queries';
 import EditCustomerForm from '../EditCustomerForm';
 
 export default class EditCustomer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
-  }
-
 	render() {
-    const { id } = this.props.match.params;
+    	const { id } = this.props.match.params;
 		return (
 			<Fragment>
-				<p>Edit Customer</p>
+				<h2>Edit Customer</h2>
 
 				<div className="row justify-content-center">
 					<Query query={CUSTOMER_GET_BY_ID} variables={{ id }}>
-						{({ loading, error, data }) => {
+						{({ loading, error, data, refetch }) => {
 							if (loading) {
 								return 'Loading...';
 							}
@@ -26,7 +21,8 @@ export default class EditCustomer extends Component {
               }
               return (
                 <EditCustomerForm
-                  customer={data.getCustomerById}
+				  customer={data.getCustomerById}
+				  refetch={refetch}
                 />
               )
 						}}
