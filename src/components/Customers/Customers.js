@@ -5,20 +5,47 @@ import { Link } from 'react-router-dom';
 import { CUSTOMERS_QUERY } from '../../queries';
 import { REMOVE_CUSTOMER } from '../../mutations';
 
+import Paginator from '../Paginator';
+
 export default class Customers extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			paginator: {
 				currentPage: 1,
-				offset: 0
+        offset: 0,
+        pageSize: 3
 			}
 		};
-	}
+  }
+  
+  changeCurrentPage = (value) => {
+    const { paginator } = this.state;
+    const { currentPage, offset, pageSize } = paginator;
+    let newOffset = null;
+    if (value < currentPage) {
+      newOffset = offset - pageSize;
+    } else {
+      newOffset = offset + pageSize;
+    }
+    this.setState({ paginator: {
+      ...paginator,
+      offset: newOffset,
+      currentPage: value
+    }})
+  };
 
 	render() {
+    const { paginator } = this.state;
 		return (
-			<Query query={CUSTOMERS_QUERY} pollInterval={100}>
+      <Query
+        query={CUSTOMERS_QUERY}
+        pollInterval={100}
+        variables={{
+          limit: paginator.pageSize,
+          offset: paginator.offset
+        }}
+      >
 				{({ loading, error, data, startPolling, stopPolling }) => {
 					if (loading) {
 						return '...loading';
@@ -60,6 +87,11 @@ export default class Customers extends Component {
 									</li>
 								))}
 							</ul>
+              <Paginator
+                changeCurrentPage={this.changeCurrentPage}
+                paginator={paginator}
+                total={data.totalCustomers}
+              />
 						</Fragment>
 					);
 				}}
