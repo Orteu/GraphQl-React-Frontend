@@ -23,7 +23,24 @@ export const UPDATE_CUSTOMER = gql`
 `;
 
 export const REMOVE_CUSTOMER = gql`
-    mutation updateCustomer($id: ID){
+    mutation removeCustomer($id: ID){
         removeCustomer(id: $id)
+    }
+`;
+
+export const NEW_PRODUCT = gql`
+mutation createProduct($input: productInput) {
+    createProduct(input: $input){
+        id
+        name
+        price
+        stock
+    }
+}
+`;
+
+export const REMOVE_PRODUCT = gql`
+    mutation removeProduct($id: ID){
+        removeProduct(id: $id)
     }
 `;

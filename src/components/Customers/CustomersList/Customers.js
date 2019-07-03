@@ -2,22 +2,22 @@ import React, { Component, Fragment } from 'react';
 import { Query, Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
-import { CUSTOMERS_QUERY } from '../../queries';
-import { REMOVE_CUSTOMER } from '../../mutations';
+import { CUSTOMERS_QUERY } from '../../../queries';
+import { REMOVE_CUSTOMER } from '../../../mutations';
 
-import Paginator from '../Paginator';
+import Paginator from '../../Base/Paginator';
 
-export default class Customers extends Component {
+export default class CustomersList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			paginator: {
 				currentPage: 1,
-        offset: 0,
-        pageSize: 3
+				offset: 0,
+				pageSize: 10
 			}
 		};
-  }
+  	}
   
   changeCurrentPage = (value) => {
     const { paginator } = this.state;

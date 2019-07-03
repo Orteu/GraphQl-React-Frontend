@@ -9,7 +9,6 @@ export const CUSTOMERS_QUERY = gql`
       email
     }
     totalCustomers
-
   }
 `;
 
@@ -22,5 +21,17 @@ export const CUSTOMER_GET_BY_ID = gql`
       email
       type
     }
+  }
+`;
+
+export const PRODUCT_GET_ALL = gql`
+  query getAllProducts($limit: Int, $offset: Int){
+    getAllProducts(limit: $limit, offset: $offset){
+      id
+      name
+      price
+      stock
+    }
+    totalProducts
   }
 `;

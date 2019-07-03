@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Query } from 'react-apollo';
-import { CUSTOMER_GET_BY_ID } from '../../queries';
+import { CUSTOMER_GET_BY_ID } from '../../../queries';
 import EditCustomerForm from '../EditCustomerForm';
 
 export default class EditCustomer extends Component {

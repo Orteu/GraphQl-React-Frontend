@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { Mutation } from 'react-apollo';
-import { UPDATE_CUSTOMER } from '../../mutations';
+import { UPDATE_CUSTOMER } from '../../../mutations';
 
 
 class EditCustomerForm extends Component {
