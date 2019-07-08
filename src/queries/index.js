@@ -35,3 +35,14 @@ export const PRODUCT_GET_ALL = gql`
     totalProducts
   }
 `;
+
+export const PRODUCT_GET_BY_ID = gql`
+ query getProductById($id: ID) {
+  getProductById(id: $id){
+    id
+    name
+    price
+    stock
+  }
+}
+`;
