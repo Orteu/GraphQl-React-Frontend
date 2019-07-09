@@ -48,7 +48,7 @@ export default class NewCustomer extends Component {
 				<div className="row justify-content-center">
 					<Mutation
 						mutation={NEW_CUSTOMER}
-						onCompleted={() => this.props.history.push('/')}
+						onCompleted={() => this.props.history.push('/customers')}
 					>
 						{(createCustomer) => (
 							<form className="col-md-8 m-3" onSubmit={(e) => this.createCustomer(e, createCustomer)}>

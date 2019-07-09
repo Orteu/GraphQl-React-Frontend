@@ -46,7 +46,7 @@ class EditCustomerForm extends Component {
 				mutation={UPDATE_CUSTOMER}
 				onCompleted={
 					() => refetch()
-						.then(() => this.props.history.push('/'))
+						.then(() => this.props.history.push('/customers'))
 				}
 			>
 				{(updateCustomer) => (
