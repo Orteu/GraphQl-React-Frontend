@@ -64,6 +64,12 @@ export default class CustomersList extends Component {
 												{`${customer.name} ${customer.surname}`}
 											</div>
 											<div className="col-md-4 d-flex justify-content-end">
+												<Link
+													to={`/orders/new/${customer.id}`}
+													className="btn btn-info d-block d-md-inline-block mr-2"
+												>
+													&#43; New order
+												</Link>
 												<Mutation mutation={REMOVE_CUSTOMER}>
 													{(removeCustomer) => (
 														<button
