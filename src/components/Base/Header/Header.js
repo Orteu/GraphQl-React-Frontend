@@ -13,8 +13,8 @@ const Header = () => (
             </button>
 
             <div className="collapse navbar-collapse" id="navegacion">
-                <ul className="navbar-nav ml-auto text-right">
-                    <li className="nav-item dropdown mr-md-2 mb-2">
+                <ul className="navbar-nav ml-auto text-right mt-md-3">
+                    <li className="nav-item dropdown mr-lg-2 mb-2">
                        <button
                             className="nav-link dropdown-toggle btn btn-block btn-success"
                             data-toggle="dropdown"
