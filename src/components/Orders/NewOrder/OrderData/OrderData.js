@@ -6,7 +6,7 @@ import Select from 'react-select';
 import Animated from 'react-select/animated';
 import ProductInfo from '../ProductInfo';
 
-const OrderData = ({ checkProductInList, selectedProducts, setProducts, setProductQuantity, totalPrice }) => (
+const OrderData = ({ checkProductInList, removeItem, selectedProducts, setProducts, setProductQuantity, totalPrice }) => (
 	<div>
 		<Query query={PRODUCT_GET_ALL} pollInterval={500}>
 			{({ loading, error, data, pollInterval }) => {
@@ -39,10 +39,11 @@ const OrderData = ({ checkProductInList, selectedProducts, setProducts, setProdu
 							selectedProducts.map((product, index) => {
 									return (
 										<ProductInfo
-										checkProductInList={checkProductInList}
+											checkProductInList={checkProductInList}
 											index={index}
 											key={product.id}
 											product={product}
+											removeItem={removeItem}
 											setProductQuantity={setProductQuantity}
 										/>
 									)					

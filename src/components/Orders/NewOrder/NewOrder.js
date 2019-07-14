@@ -24,6 +24,16 @@ export default class NewOrder extends Component {
 
     }
 
+    removeItem = (index) => {
+        let totalPrice = 0;
+        const { selectedProducts } = this.state;
+        const updatedQuantities = [ ...selectedProducts ];
+        updatedQuantities.splice(index, 1);
+        updatedQuantities.map((product) => totalPrice += (product.price * product.quantity))
+        this.setState({ selectedProducts: updatedQuantities, totalPrice });
+
+    }
+
     setProducts = (products) => {
         let formattedProducts = [];
         if (products && 0 < products.length) {
@@ -56,7 +66,8 @@ export default class NewOrder extends Component {
                     </div>
                     <div className="col-md-8">
                         <OrderData
-                        checkProductInList={this.checkProductInList}
+                            checkProductInList={this.checkProductInList}
+                            removeItem={this.removeItem}
                             selectedProducts={selectedProducts}
                             setProducts={this.setProducts}
                             setProductQuantity={this.setProductQuantity}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-const ProductInfo = ({ checkProductInList, index, product, setProductQuantity }) => (
+const ProductInfo = ({ checkProductInList, index, product, removeItem, setProductQuantity }) => (
     <div className="product-card">
         <div className="card-beauty" />
         <div className="product-info">
@@ -20,9 +20,12 @@ const ProductInfo = ({ checkProductInList, index, product, setProductQuantity })
                 onChange={e => setProductQuantity(index, e.target.value)}
                 onBlur={e => checkProductInList(index, e.target.value)}
             />
-            {/* <button
-                onClick={() => checkProductInList(index, 0)}
-            /> */}
+            <button
+                className="btn btn-danger mt-5"
+                onClick={() => removeItem(index)}
+            >
+                Remove
+            </button>
         </div>
     </div>
 );
