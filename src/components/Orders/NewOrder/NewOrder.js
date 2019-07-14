@@ -9,8 +9,19 @@ export default class NewOrder extends Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedProducts: []
+            selectedProducts: [],
+            totalPrice: 0
         }
+    }
+
+    checkProductInList = (index, value) => {
+        const { selectedProducts } = this.state;
+        const updatedQuantities = [ ...selectedProducts ];
+        if (!parseInt(value) || parseInt(value) < 0) {
+            updatedQuantities.splice(index, 1);
+        }
+        this.setState({ selectedProducts: updatedQuantities });
+
     }
 
     setProducts = (products) => {
@@ -25,17 +36,15 @@ export default class NewOrder extends Component {
     setProductQuantity = (index, value) => {
         const { selectedProducts } = this.state;
         const updatedQuantities = [ ...selectedProducts ];
-        if (!parseInt(value)) {
-            updatedQuantities.splice(index, 1);
-        } else {
-            updatedQuantities[index].quantity = parseInt(value);
-        }
-        this.setState({ selectedProducts: updatedQuantities });
+        let totalPrice = 0;
+        parseInt(value) < 0 ? updatedQuantities[index].quantity = 0 : updatedQuantities[index].quantity = parseInt(value);
+        updatedQuantities.map((product) => totalPrice += (product.price * product.quantity))
+        this.setState({ selectedProducts: updatedQuantities, totalPrice });
     }
 
     render() {
         const { id } = this.props.match.params;
-        const { selectedProducts } = this.state;
+        const { selectedProducts, totalPrice } = this.state;
         return (
             <div>
                 <h2 className="text-center mb-4">New orders</h2>
@@ -47,9 +56,11 @@ export default class NewOrder extends Component {
                     </div>
                     <div className="col-md-8">
                         <OrderData
+                        checkProductInList={this.checkProductInList}
                             selectedProducts={selectedProducts}
                             setProducts={this.setProducts}
                             setProductQuantity={this.setProductQuantity}
+                            totalPrice={totalPrice}
                         />
                     </div>
                 </div>

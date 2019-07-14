@@ -6,7 +6,7 @@ import Select from 'react-select';
 import Animated from 'react-select/animated';
 import ProductInfo from '../ProductInfo';
 
-const OrderData = ({ selectedProducts, setProducts, setProductQuantity }) => (
+const OrderData = ({ checkProductInList, selectedProducts, setProducts, setProductQuantity, totalPrice }) => (
 	<div>
 		<Query query={PRODUCT_GET_ALL} pollInterval={500}>
 			{({ loading, error, data, pollInterval }) => {
@@ -37,19 +37,24 @@ const OrderData = ({ selectedProducts, setProducts, setProductQuantity }) => (
 						{selectedProducts &&
 							0 < selectedProducts.length &&
 							selectedProducts.map((product, index) => {
-								if (product.quantity) {
 									return (
 										<ProductInfo
-										index={index}
-										key={product.id}
-										product={product}
-										setProductQuantity={setProductQuantity}
-									/>
-									)
-								}		
-								return null;					
+										checkProductInList={checkProductInList}
+											index={index}
+											key={product.id}
+											product={product}
+											setProductQuantity={setProductQuantity}
+										/>
+									)					
 							}
-							)}
+						)}
+						{
+							0 < totalPrice &&
+								<div className="float-right">
+									<p>Total price: {`${totalPrice} Euros`}</p>
+								</div>
+						}
+
 					</div>
 				);
 			}}
